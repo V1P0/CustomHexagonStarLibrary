@@ -32,7 +32,7 @@ public class ChineseCheckersBoardAdapter {
                 if(fields[x][y] == null) continue;
                 fields[x][y].setStroke(Color.BLACK);
                 fields[x][y].setStrokeWidth(5);
-                fields[x][y].setOnMouseEntered(mouseEvent -> {
+                fields[x][y].setOnMouseMoved(mouseEvent -> {
                     Field field = (Field) mouseEvent.getSource();
                     ChineseCheckersBoard Logic = checkersBoard.setValidMoves(field.getHeight(),field.getWidth());
                     for(int i = 0; i< Logic.getBoard().length; i++){

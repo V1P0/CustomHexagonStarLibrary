@@ -1,7 +1,3 @@
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-
 public class ChineseCheckersBoard {
     private int[][] board;
     private int size;
@@ -14,7 +10,6 @@ public class ChineseCheckersBoard {
     public int[][] getBoard(){
         return board;
     }
-
 
     public void printInTerminal(){
         for(int[] a :board){
