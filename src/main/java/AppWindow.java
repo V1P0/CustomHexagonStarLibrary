@@ -13,7 +13,7 @@ public class AppWindow extends Application {
     public void start(Stage stage){
         Group group = new Group();
         try {
-            ChineseCheckersBoard board = new ChineseCheckersBoardBuilder().setSize(5).setNumberOfPlayers(4).build();
+            ChineseCheckersBoard board = new ChineseCheckersBoardBuilder().setSize(5).setNumberOfPlayers(2).build();
             board.printInTerminal();
             ChineseCheckersBoardAdapter BoardAdapter = new ChineseCheckersBoardAdapter(board);
             Field[][] fields = BoardAdapter.getFields();

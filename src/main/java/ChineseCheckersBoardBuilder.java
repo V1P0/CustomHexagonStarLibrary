@@ -23,7 +23,7 @@ public class ChineseCheckersBoardBuilder {
         return this;
     }
     public ChineseCheckersBoard build() throws Exception{
-        if(size < 1 || numberOfPlayers < 0 || numberOfPlayers == 2 || numberOfPlayers == 5 || numberOfPlayers >6) throw new Exception("wrong build parameters");
+        if(size < 1 || numberOfPlayers < 0 || numberOfPlayers==1 || numberOfPlayers == 5 || numberOfPlayers >6) throw new Exception("wrong build parameters");
         ChineseCheckersBoard checkersBoard = new ChineseCheckersBoard();
         height = size+3*(size-1); //dla size = 5 wynosi 17
         width = 2*(size+2*(size-1))-1; //dla size = 5 wynosi 25
