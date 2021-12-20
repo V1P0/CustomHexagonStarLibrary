@@ -37,11 +37,18 @@ public class ChineseCheckersBoard {
         try {
             LogicBoard = new ChineseCheckersBoardBuilder().setNumberOfPlayers(0).setSize(size).build();
             if(board[height][width] == 0) return LogicBoard;
-                for(int i = 0; i<6; i++){
+            for(int i = 0; i<6; i++){
                 try {
                     int[] pointaftermove = moveOneField(height, width, i);
                     if (board[pointaftermove[0]][pointaftermove[1]] == 0){
                         LogicBoard.board[pointaftermove[0]][pointaftermove[1]] = 1;
+                    }else if(board[pointaftermove[0]][pointaftermove[1]] > 0){
+                        int[] pointafterjump = moveOneField(pointaftermove[0],pointaftermove[1],i);
+                        //jump validation
+                        if(board[pointafterjump[0]][pointafterjump[1]] == 0){
+                            LogicBoard.board[pointafterjump[0]][pointafterjump[1]] = 1;
+                            validateAfterJump(LogicBoard,pointafterjump[0],pointafterjump[1], height, width);
+                        }
                     }
                 }catch (Exception ignored){}
             }
@@ -70,6 +77,22 @@ public class ChineseCheckersBoard {
         if(width<0||width==board[0].length||height<0||height== board.length) throw new Exception("point is outside of the board");
         if(board[height][width]==-1) throw new Exception("point is outside of the board");
         return new int[]{height, width};
+    }
+
+    private void validateAfterJump(ChineseCheckersBoard logic, int heightAfterJump, int widthAfterJump, int heightBeforeJump, int widthBeforeJump){
+        for(int i = 0; i<6; i++){
+            try {
+                int[] pointaftermove = moveOneField(heightAfterJump, widthAfterJump, i);
+                if(board[pointaftermove[0]][pointaftermove[1]] > 0){
+                    int[] pointafterjump = moveOneField(pointaftermove[0],pointaftermove[1],i);
+                    if(pointafterjump[0]==heightBeforeJump && pointafterjump[1]==widthBeforeJump) continue;
+                    if(board[pointafterjump[0]][pointafterjump[1]] == 0){
+                        logic.board[pointafterjump[0]][pointafterjump[1]] = 1;
+                        validateAfterJump(logic,pointafterjump[0],pointafterjump[1], heightAfterJump, widthAfterJump);
+                    }
+                }
+            }catch (Exception ignored){}
+        }
     }
 
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception{
