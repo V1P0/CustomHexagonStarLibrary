@@ -87,6 +87,7 @@ public class ChineseCheckersBoard {
                     int[] pointafterjump = moveOneField(pointaftermove[0],pointaftermove[1],i);
                     if(pointafterjump[0]==heightBeforeJump && pointafterjump[1]==widthBeforeJump) continue;
                     if(board[pointafterjump[0]][pointafterjump[1]] == 0){
+                        if(logic.board[pointafterjump[0]][pointafterjump[1]] == 1) continue;
                         logic.board[pointafterjump[0]][pointafterjump[1]] = 1;
                         validateAfterJump(logic,pointafterjump[0],pointafterjump[1], heightAfterJump, widthAfterJump);
                     }
