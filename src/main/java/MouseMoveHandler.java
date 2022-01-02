@@ -11,6 +11,9 @@ public class MouseMoveHandler implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
         Field field = (Field) mouseEvent.getSource();
+        if(ccba.checkersBoard.getBoard()[field.getHeight()][field.getWidth()] == 0 && !isPawnChoosen){
+            return;
+        }
         try {
             if (isPawnChoosen) {
                 ccba.move(pawnX, pawnY, field.getWidth(), field.getHeight());

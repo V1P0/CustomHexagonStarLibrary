@@ -70,7 +70,7 @@ public class ChineseCheckersBoardBuilder {
         int goodPoint = width/2;
         for(int i = 1; i<size; i++){
             for(int j = 0; j<i; j++){
-                board[i-1][goodPoint+2*j] = 2;
+                board[i-1][goodPoint+2*j] = 4;
                 board[height-i][goodPoint+2*j] = 1;
             }
             goodPoint = goodPoint - 1;
@@ -87,8 +87,8 @@ public class ChineseCheckersBoardBuilder {
         goodPoint = 0;
         for(int i = size; i<2*size-1; i++){
             for(int j = 0; j<size-(i-size)-1; j++){
-                board[i-1][goodPoint+2*j] = 2;
-                board[i-1][width-goodPoint-2*j-1] = 3;
+                board[i-1][goodPoint+2*j] = 3;
+                board[i-1][width-goodPoint-2*j-1] = 5;
             }
             goodPoint = goodPoint + 1;
         }
@@ -97,10 +97,10 @@ public class ChineseCheckersBoardBuilder {
         int goodPoint = 0;
         for(int i = size; i<2*size-1; i++){
             for(int j = 0; j<size-(i-size)-1; j++){
-                board[i-1][goodPoint+2*j] = 2;
-                board[i-1][width-goodPoint-2*j-1] = 3;
-                board[height-i][goodPoint+2*j] = 1;
-                board[height-i][width-goodPoint-2*j-1] = 4;
+                board[i-1][goodPoint+2*j] = 3;
+                board[i-1][width-goodPoint-2*j-1] = 5;
+                board[height-i][goodPoint+2*j] = 2;
+                board[height-i][width-goodPoint-2*j-1] = 6;
             }
             goodPoint = goodPoint + 1;
         }

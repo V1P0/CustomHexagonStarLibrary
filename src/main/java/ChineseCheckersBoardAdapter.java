@@ -54,6 +54,7 @@ public class ChineseCheckersBoardAdapter {
     }
 
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception{
+        if(checkersBoard.isInTarget(pawnX, pawnY, moveX, moveY)) System.out.println("target");
         checkersBoard.move(pawnX,pawnY,moveX,moveY);
         int[][] board = checkersBoard.getBoard();
         for(int x = 0; x < board.length; x++){
